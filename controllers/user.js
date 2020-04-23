@@ -17,7 +17,11 @@ exports.showSignup = function(req, res, next) {
 }
 
 exports.login = function(req, res, next) {
-  res.render('user/signup', {formData: {}, errors: {}});
+  passport.authenticate('local', {
+    successRedirect: "/",
+    failRedirect: "/login",
+    failFlash: true
+  })(req, res, next)
 }
 
 exports.signup = function(req, res, next) {
@@ -32,4 +36,10 @@ exports.signup = function(req, res, next) {
       failFlash: true
     })(req, res, next)
   })
+}
+
+exports.logout = function(req, res, next) {
+  req.logout();
+  req.session.destroy();
+  res.redirect('/');
 }
