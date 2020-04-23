@@ -15,17 +15,6 @@ html(lang='en')
                   input(name="leadEmail" type="email", placeholder="Please enter your e-mail").form-control
                   .input-group-append
                     button(type="submit").btn.btn-primary Get Started
-          .row
-            .col-md-6
-              if leads
-                h1 Leads
-                for lead in leads
-                  p(id=lead.id)
-                    span #{lead.email}
-                    | 
-                    a(href="/lead/" + lead.id) Details
-                    | 
-                    button(onclick=`deleteLead('${lead.id}')`) Delete
       include templates/footer.pug
       +footer()
       script(src='/javascripts/leads.js')
