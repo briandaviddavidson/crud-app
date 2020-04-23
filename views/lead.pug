@@ -4,4 +4,9 @@ block content
   h1 Lead
   p 
     span #{lead.email}
-    a(href="/lead/" + lead.id + "/edit")  Edit lead
+    | 
+    a(href="/lead/" + lead.id + "/edit") Edit lead
+    |
+    form(action="/lead/"+lead.id+"/delete", method="POST")
+      button(type="submit") Delete
+    
