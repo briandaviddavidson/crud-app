@@ -6,3 +6,7 @@ block content
   form(action="/", method="POST")
     input(name="leadEmail" type="email", placeholder="Please enter your e-mail")
     button(type="submit") Submit
+  if leads
+    h1 Leads
+    for lead in leads
+      p #{lead.email}
