@@ -1,20 +1,22 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  form(action="/", method="POST")
-    input(name="leadEmail" type="email", placeholder="Please enter your e-mail")
-    button(type="submit") Submit
-  if leads
-    h1 Leads
-    for lead in leads
-      p(id=lead.id)
-        span #{lead.email}
-        | 
-        a(href="/lead/" + lead.id) Details
-        | 
-        button(onclick=`deleteLead('${lead.id}')`) Delete
-
-  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
-  script(src='/javascripts/leads.js')
+doctype html
+html(lang='en')
+  include templates/head.pug
+  +head("CRUD Sales Application")
+  body
+    h1= title
+    p Welcome to #{title}
+    form(action="/", method="POST")
+      input(name="leadEmail" type="email", placeholder="Please enter your e-mail")
+      button(type="submit") Submit
+    if leads
+      h1 Leads
+      for lead in leads
+        p(id=lead.id)
+          span #{lead.email}
+          | 
+          a(href="/lead/" + lead.id) Details
+          | 
+          button(onclick=`deleteLead('${lead.id}')`) Delete
+      include templates/footer.pug
+      +footer()
+      script(src='/javascripts/leads.js')
