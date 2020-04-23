@@ -3,20 +3,29 @@ html(lang='en')
   include templates/head.pug
   +head("CRUD Sales Application")
   body
-    h1= title
-    p Welcome to #{title}
-    form(action="/", method="POST")
-      input(name="leadEmail" type="email", placeholder="Please enter your e-mail")
-      button(type="submit") Submit
-    if leads
-      h1 Leads
-      for lead in leads
-        p(id=lead.id)
-          span #{lead.email}
-          | 
-          a(href="/lead/" + lead.id) Details
-          | 
-          button(onclick=`deleteLead('${lead.id}')`) Delete
+    header
+      include templates/navbar.pug
+      +navbar()
+      .container
+          .row.align-items-center
+            .col-md-6.order-md-1.text-center.text-md-left.pr-md-5
+              h1.mb-3 Sales Collection Application
+              form(action="/", method="POST")
+                .input-group.mb-3
+                  input(name="leadEmail" type="email", placeholder="Please enter your e-mail").form-control
+                  .input-group-append
+                    button(type="submit").btn.btn-primary Get Started
+          .row
+            .col-md-6
+              if leads
+                h1 Leads
+                for lead in leads
+                  p(id=lead.id)
+                    span #{lead.email}
+                    | 
+                    a(href="/lead/" + lead.id) Details
+                    | 
+                    button(onclick=`deleteLead('${lead.id}')`) Delete
       include templates/footer.pug
       +footer()
       script(src='/javascripts/leads.js')
