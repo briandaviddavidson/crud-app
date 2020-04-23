@@ -6,6 +6,8 @@ let user = require('../controllers/user');
 // Login routes
 router.get('/login', user.showLogin);
 router.get('/signup', user.showSignup);
+router.post('/login', user.login);
+router.post('/signup', user.signup);
 // Sales pages
 router.get('/', landing.getLanding);
 router.post('/', landing.submitLead);
